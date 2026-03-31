@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Management System</title>
+</head>
+<body>
+
+  <header>
+    <h1>Task Management System</h1>
+    <nav>
+      <ul>
+        <li><a href="#auth">Authentication</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#users">Users</a></li>
+        <li><a href="#task-form-section">Create Task</a></li>
+        <li><a href="#task-list">Task List</a></li>
+        <li><a href="#task-details">Task Details</a></li>
+        <li><a href="#kanban">Kanban</a></li>
+        <li><a href="#calendar-view">Calendar</a></li>
+        <li><a href="#workspace">Workspace</a></li>
+        <li><a href="#reports">Reports</a></li>
+        <li><a href="#notifications">Notifications</a></li>
+        <li><a href="#activity-log">Activity Log</a></li>
+        <li><a href="#settings">Settings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="auth">
+      <h2>Authentication</h2>
+
+      <section>
+        <h3>Login</h3>
+        <form id="loginForm">
+          <label for="loginEmail">Email</label><br />
+          <input type="email" id="loginEmail" name="loginEmail" /><br /><br />
+
+          <label for="loginPassword">Password</label><br />
+          <input type="password" id="loginPassword" name="loginPassword" /><br /><br />
+
+          <button type="submit">Login</button>
+        </form>
+      </section>
+
+      <section>
+        <h3>Register</h3>
+        <form id="registerForm">
+          <label for="registerName">Full Name</label><br />
+          <input type="text" id="registerName" name="registerName" /><br /><br />
+
+          <label for="registerEmail">Email</label><br />
+          <input type="email" id="registerEmail" name="registerEmail" /><br /><br />
+
+          <label for="registerPassword">Password</label><br />
+          <input type="password" id="registerPassword" name="registerPassword" /><br /><br />
+
+          <label for="registerRole">Role</label><br />
+          <select id="registerRole" name="registerRole">
+            <option value="">Select Role</option>
+            <option value="admin">Admin</option>
+            <option value="manager">Manager</option>
+            <option value="developer">Developer</option>
+            <option value="tester">Tester</option>
+          </select><br /><br />
+
+          <button type="submit">Register</button>
+        </form>
+      </section>
+    </section>
+
+    <section id="dashboard">
+      <h2>Dashboard</h2>
+
+      <div>
+        <article>
+          <h3>Total Tasks</h3>
+          <p id="totalTasks"></p>
+        </article>
+
+        <article>
+          <h3>To Do</h3>
+          <p id="todoCount"></p>
+        </article>
+
+        <article>
+          <h3>In Progress</h3>
+          <p id="inProgressCount"></p>
+        </article>
+
+        <article>
+          <h3>Completed</h3>
+          <p id="completedCount"></p>
+        </article>
+
+        <article>
+          <h3>Overdue Tasks</h3>
+          <p id="overdueCount"></p>
+        </article>
+
+        <article>
+          <h3>High Priority Tasks</h3>
+          <p id="highPriorityCount"></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="users">
+      <h2>User Management</h2>
+
+      <section>
+        <h3>Create / Manage Users</h3>
+        <form id="userForm">
+          <label for="userName">Name</label><br />
+          <input type="text" id="userName" name="userName" /><br /><br />
+
+          <label for="userEmail">Email</label><br />
+          <input type="email" id="userEmail" name="userEmail" /><br /><br />
+
+          <label for="userRole">Role</label><br />
+          <select id="userRole" name="userRole">
+            <option value="">Select Role</option>
+            <option value="admin">Admin</option>
+            <option value="manager">Manager</option>
+            <option value="developer">Developer</option>
+            <option value="tester">Tester</option>
+          </select><br /><br />
+
+          <button type="submit">Save User</button>
+        </form>
+      </section>
+
+      <section>
+        <h3>User List</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="userTableBody">
+            <!-- Users will be added here -->
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    <section id="task-form-section">
+      <h2>Create / Update Task</h2>
+
+      <form id="taskForm">
+        <label for="taskTitle">Task Title</label><br />
+        <input type="text" id="taskTitle" name="taskTitle" /><br /><br />
+
+        <label for="taskDescription">Description</label><br />
+        <textarea id="taskDescription" name="taskDescription" rows="5"></textarea><br /><br />
+
+        <label for="assignedUser">Assign To</label><br />
+        <select id="assignedUser" name="assignedUser">
+          <option value="">Select User</option>
+        </select><br /><br />
+
+        <label for="taskPriority">Priority</label><br />
+        <select id="taskPriority" name="taskPriority">
+          <option value="">Select Priority</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select><br /><br />
+
+        <label for="taskStatus">Status</label><br />
+        <select id="taskStatus" name="taskStatus">
+          <option value="">Select Status</option>
+          <option value="todo">To Do</option>
+          <option value="in-progress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select><br /><br />
+
+        <label for="taskDeadline">Deadline</label><br />
+        <input type="date" id="taskDeadline" name="taskDeadline" /><br /><br />
+
+        <label for="taskDependency">Task Dependency</label><br />
+        <select id="taskDependency" name="taskDependency">
+          <option value="">Select Dependent Task</option>
+        </select><br /><br />
+
+        <label for="taskTags">Tags</label><br />
+        <input type="text" id="taskTags" name="taskTags" /><br /><br />
+
+        <label for="taskReminder">Reminder</label><br />
+        <input type="datetime-local" id="taskReminder" name="taskReminder" /><br /><br />
+
+        <label for="priorityStrategy">Prioritization Strategy</label><br />
+        <select id="priorityStrategy" name="priorityStrategy">
+          <option value="">Select Strategy</option>
+          <option value="manual">Manual</option>
+          <option value="deadline-based">Deadline Based</option>
+          <option value="ai-driven">AI Driven</option>
+        </select><br /><br />
+
+        <button type="submit">Save Task</button>
+        <button type="reset">Clear Form</button>
+      </form>
+
+      <section>
+        <h3>Priority Recommendation</h3>
+        <div id="priorityRecommendationArea">
+          <!-- Priority suggestions will appear here -->
+        </div>
+      </section>
+    </section>
+
+    <section id="task-list">
+      <h2>Task List</h2>
+
+      <section>
+        <h3>Filters</h3>
+        <form id="filterForm">
+          <label for="filterStatus">Status</label><br />
+          <select id="filterStatus" name="filterStatus">
+            <option value="">All</option>
+            <option value="todo">To Do</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select><br /><br />
+
+          <label for="filterPriority">Priority</label><br />
+          <select id="filterPriority" name="filterPriority">
+            <option value="">All</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select><br /><br />
+
+          <label for="filterUser">Assigned User</label><br />
+          <select id="filterUser" name="filterUser">
+            <option value="">All Users</option>
+          </select><br /><br />
+
+          <button type="submit">Apply Filters</button>
+        </form>
+      </section>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Task ID</th>
+            <th>Title</th>
+            <th>Assigned To</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Deadline</th>
+            <th>Dependency</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="taskTableBody">
+          <!-- Tasks will be added here -->
+        </tbody>
+      </table>
+    </section>
+
+    <section id="task-details">
+      <h2>Task Details</h2>
+      <article id="taskDetailsContainer">
+        <!-- Selected task details will appear here -->
+      </article>
+    </section>
+
+    <section id="kanban">
+      <h2>Kanban Board</h2>
+
+      <div>
+        <section>
+          <h3>To Do</h3>
+          <div id="todoColumn">
+            <!-- To Do tasks -->
+          </div>
+        </section>
+
+        <section>
+          <h3>In Progress</h3>
+          <div id="inProgressColumn">
+            <!-- In Progress tasks -->
+          </div>
+        </section>
+
+        <section>
+          <h3>Completed</h3>
+          <div id="completedColumn">
+            <!-- Completed tasks -->
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="calendar-view">
+      <h2>Calendar View</h2>
+      <div id="calendarContainer">
+        <!-- Calendar will render here -->
+      </div>
+    </section>
+
+    <section id="workspace">
+      <h2>Collaborative Workspace</h2>
+
+      <div id="workspaceMembers">
+        <!-- Active collaborators -->
+      </div>
+
+      <div id="workspaceUpdates">
+        <!-- Real-time updates -->
+      </div>
+    </section>
+
+    <section id="offline-sync">
+      <h2>Offline Mode & Synchronization</h2>
+      <p id="syncStatus"></p>
+      <div id="offlineQueue">
+        <!-- Offline changes queue -->
+      </div>
+    </section>
+
+    <section id="reports">
+      <h2>Reports & Analytics</h2>
+
+      <section>
+        <h3>Task Progress</h3>
+        <canvas id="taskProgressChart"></canvas>
+      </section>
+
+      <section>
+        <h3>Priority Distribution</h3>
+        <canvas id="priorityChart"></canvas>
+      </section>
+
+      <section>
+        <h3>User Productivity</h3>
+        <canvas id="productivityChart"></canvas>
+      </section>
+
+      <section>
+        <h3>Efficiency Metrics</h3>
+        <div id="efficiencyMetrics">
+          <!-- Metrics will appear here -->
+        </div>
+      </section>
+    </section>
+
+    <section id="notifications">
+      <h2>Notifications</h2>
+      <ul id="notificationList">
+        <!-- Notifications will be added here -->
+      </ul>
+    </section>
+
+    <section id="activity-log">
+      <h2>Activity Log</h2>
+      <ul id="activityLogList">
+        <!-- Activity logs will be added here -->
+      </ul>
+    </section>
+
+    <section id="settings">
+      <h2>Settings</h2>
+
+      <form id="settingsForm">
+        <label for="themeSetting">Theme</label><br />
+        <select id="themeSetting" name="themeSetting">
+          <option value="">Select Theme</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select><br /><br />
+
+        <label for="notificationSetting">Notifications</label><br />
+        <select id="notificationSetting" name="notificationSetting">
+          <option value="">Select Option</option>
+          <option value="enabled">Enabled</option>
+          <option value="disabled">Disabled</option>
+        </select><br /><br />
+
+        <button type="submit">Save Settings</button>
+      </form>
+    </section>
+
+    <section id="messages">
+      <h2>System Messages</h2>
+      <div id="errorMessages">
+        <!-- Error messages -->
+      </div>
+      <div id="successMessages">
+        <!-- Success messages -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Task Management System</p>
+  </footer>
+
+</body>
+</html>
