@@ -1,0 +1,477 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #334155;
+    line-height: 1.5;
+}
+
+/* Top Header */
+.topbar {
+    background-color: #eef6ff;
+    border-bottom: 1px solid #dbe7f3;
+    padding: 28px 20px;
+}
+
+.topbar-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.site-title {
+    color: #264766;
+    font-size: 2rem;
+    margin-bottom: 6px;
+}
+
+.site-subtitle {
+    color: #6b7f92;
+    font-size: 1rem;
+}
+
+/* Header Layout */
+.topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Left side */
+.topbar-left {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Right side (Account panel) */
+.topbar-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+/* Account text */
+#accountInfo {
+    font-size: 0.9rem;
+    color: #42586c;
+    text-align: right;
+}
+
+/* Logout button */
+#logoutBtn {
+    background-color: #ef4444;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+#logoutBtn:hover {
+    background-color: #dc2626;
+}
+
+/* Page Layout */
+.page-layout {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 24px;
+    padding: 24px;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #ffffff;
+    border: 1px solid #e4edf5;
+    border-radius: 16px;
+    padding: 20px;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar-title {
+    color: #264766;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+}
+
+.sidebar-nav {
+    list-style: none;
+}
+
+.sidebar-nav li+li {
+    margin-top: 8px;
+}
+
+.sidebar-nav a {
+    display: block;
+    text-decoration: none;
+    color: #51687d;
+    background-color: #f8fbff;
+    border: 1px solid #e3edf7;
+    border-radius: 10px;
+    padding: 10px 12px;
+    transition: 0.3s ease;
+}
+
+.sidebar-nav a:hover {
+    background-color: #eaf4ff;
+    color: #264766;
+}
+
+/* Main Content */
+.content {
+    min-width: 0;
+}
+
+/* Panels */
+.panel {
+    background-color: #ffffff;
+    border: 1px solid #e4edf5;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.section-heading {
+    margin-bottom: 18px;
+}
+
+.section-heading h2,
+.panel h2 {
+    color: #264766;
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+}
+
+.section-heading p {
+    color: #70859b;
+}
+
+/* Reusable Layout */
+.two-column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.box {
+    background-color: #fcfdff;
+    border: 1px solid #edf3f8;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.box h3 {
+    color: #35587a;
+    margin-bottom: 14px;
+}
+
+/* Dashboard */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.stat-card {
+    background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
+    border: 1px solid #dce9f6;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.stat-card h3 {
+    color: #4d6781;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    min-height: 28px;
+    color: #264766;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+/* Forms */
+.form-stack {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-stack label {
+    font-weight: bold;
+    color: #42586c;
+    margin-bottom: 6px;
+}
+
+.form-stack input,
+.form-stack select,
+.form-stack textarea {
+    width: 100%;
+    padding: 11px 12px;
+    margin-bottom: 16px;
+    border: 1px solid #d6e2ed;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #334155;
+    font: inherit;
+}
+
+.form-stack textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-stack input:focus,
+.form-stack select:focus,
+.form-stack textarea:focus {
+    outline: none;
+    border-color: #91b7dc;
+    box-shadow: 0 0 0 3px rgba(145, 183, 220, 0.2);
+}
+
+/* Buttons */
+button {
+    border: none;
+    border-radius: 10px;
+    background-color: #78a8d8;
+    color: #ffffff;
+    padding: 11px 16px;
+    font: inherit;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: #6798c9;
+}
+
+.secondary-btn {
+    background-color: #dbe7f2;
+    color: #42586c;
+}
+
+.secondary-btn:hover {
+    background-color: #cad9e8;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead {
+    background-color: #edf5fc;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #e2edf8;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    color: #35587a;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #fbfdff;
+}
+
+tbody tr:hover {
+    background-color: #f3f8fd;
+}
+
+/* Task Form Select if empty */
+#assignedUser:empty::after {
+    content: "";
+}
+
+/* Kanban */
+.kanban-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.kanban-layout>div {
+    background-color: #fcfdff;
+    border: 1px solid #e7eff7;
+    border-radius: 14px;
+    padding: 16px;
+}
+
+.kanban-layout h3 {
+    color: #35587a;
+    margin-bottom: 12px;
+}
+
+#todoColumn,
+#inProgressColumn,
+#completedColumn {
+    min-height: 240px;
+    background-color: #f8fbff;
+    border: 2px dashed #c7dcef;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+/* Calendar / Report placeholders */
+#calendarContainer,
+#taskProgressChart {
+    width: 100%;
+    min-height: 220px;
+    background-color: #f8fbff;
+    border: 1px dashed #c7dcef;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+/* Lists */
+#notificationList,
+#activityLogList {
+    list-style: none;
+}
+
+#notificationList li,
+#activityLogList li {
+    background-color: #f8fbff;
+    border: 1px solid #e2edf8;
+    border-radius: 12px;
+    padding: 12px 14px;
+}
+
+#notificationList li+li,
+#activityLogList li+li {
+    margin-top: 10px;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 18px;
+    color: #6b7f92;
+}
+
+/* Small action buttons in table if JS adds them later */
+td button {
+    margin-right: 8px;
+    margin-bottom: 6px;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .page-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .sidebar-nav {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .sidebar-nav li+li {
+        margin-top: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .kanban-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-layout {
+        padding: 16px;
+    }
+
+    .two-column,
+    .stats-grid,
+    .sidebar-nav {
+        grid-template-columns: 1fr;
+    }
+
+    .site-title {
+        font-size: 1.6rem;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+
+    .button-row {
+        flex-direction: column;
+    }
+
+    .button-row button {
+        width: 100%;
+    }
+
+    table,
+    thead,
+    tbody,
+    tr,
+    th,
+    td {
+        display: block;
+        width: 100%;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 14px;
+        border: 1px solid #e2edf8;
+        border-radius: 12px;
+        overflow: hidden;
+        background-color: #ffffff;
+    }
+
+    td {
+        border: none;
+        border-bottom: 1px solid #eef4fa;
+        padding: 10px 12px;
+    }
+
+    td:last-child {
+        border-bottom: none;
+    }
+}
