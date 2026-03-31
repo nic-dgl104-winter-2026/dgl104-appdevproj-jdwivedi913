@@ -1,212 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Task Management System</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Management System</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-  <header class="header">
-    <h1 class="logo">Task Management System</h1>
-
-    <nav class="nav">
-      <ul class="nav-list">
-        <li><a href="#auth">Authentication</a></li>
-        <li><a href="#dashboard">Dashboard</a></li>
-        <li><a href="#users">Users</a></li>
-        <li><a href="#task-form-section">Create Task</a></li>
-        <li><a href="#task-list">Task List</a></li>
-        <li><a href="#kanban">Kanban</a></li>
-        <li><a href="#reports">Reports</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="container">
-
-    <!-- Authentication -->
-    <section id="auth" class="section">
-      <h2>Authentication</h2>
-
-      <div class="grid-2">
-
-        <section class="card">
-          <h3>Login</h3>
-          <form id="loginForm" class="form">
-            <label>Email</label>
-            <input type="email" />
-
-            <label>Password</label>
-            <input type="password" />
-
-            <button type="submit" class="btn primary">Login</button>
-          </form>
-        </section>
-
-        <section class="card">
-          <h3>Register</h3>
-          <form id="registerForm" class="form">
-            <label>Name</label>
-            <input type="text" />
-
-            <label>Email</label>
-            <input type="email" />
-
-            <label>Password</label>
-            <input type="password" />
-
-            <label>Role</label>
-            <select>
-              <option>Select Role</option>
-              <option>Admin</option>
-              <option>Manager</option>
-              <option>Developer</option>
-              <option>Tester</option>
-            </select>
-
-            <button type="submit" class="btn primary">Register</button>
-          </form>
-        </section>
-
-      </div>
-    </section>
-
-    <!-- Dashboard -->
-    <section id="dashboard" class="section">
-      <h2>Dashboard</h2>
-
-      <div class="dashboard-grid">
-        <div class="card stat">
-          <h3>Total Tasks</h3>
-          <p id="totalTasks"></p>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <h1 class="site-title">Task Management System</h1>
+            <p class="site-subtitle">Organize tasks, users, and progress</p>
         </div>
+    </header>
 
-        <div class="card stat">
-          <h3>To Do</h3>
-          <p id="todoCount"></p>
-        </div>
+    <div class="page-layout">
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Menu</h2>
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="#auth">Authentication</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#users">Users</a></li>
+                    <li><a href="#task-form-section">Create Task</a></li>
+                    <li><a href="#task-list">Task List</a></li>
+                    <li><a href="#kanban">Kanban</a></li>
+                    <li><a href="#calendar-view">Calendar</a></li>
+                    <li><a href="#reports">Reports</a></li>
+                    <li><a href="#notifications">Notifications</a></li>
+                    <li><a href="#activity-log">Activity Log</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-        <div class="card stat">
-          <h3>In Progress</h3>
-          <p id="inProgressCount"></p>
-        </div>
+        <main class="content">
 
-        <div class="card stat">
-          <h3>Completed</h3>
-          <p id="completedCount"></p>
-        </div>
-      </div>
-    </section>
+            <!-- AUTH -->
+            <section id="auth" class="panel">
+                <div class="section-heading">
+                    <h2>Authentication</h2>
+                    <p>Login and register users.</p>
+                </div>
 
-    <!-- Task Form -->
-    <section id="task-form-section" class="section">
-      <h2>Create Task</h2>
+                <div class="two-column">
+                    <section class="box">
+                        <h3>Login</h3>
+                        <form id="loginForm" class="form-stack">
+                            <label>Email</label>
+                            <input type="email" id="loginEmail" />
 
-      <form id="taskForm" class="form card">
-        <label>Title</label>
-        <input type="text" />
+                            <label>Password</label>
+                            <input type="password" id="loginPassword" />
 
-        <label>Description</label>
-        <textarea></textarea>
+                            <label>Role</label>
+                            <select id="loginRole">
+                                <option value="">Select Role</option>
+                                <option value="admin">Admin</option>
+                                <option value="manager">Manager</option>
+                                <option value="developer">Developer</option>
+                                <option value="tester">Tester</option>
+                            </select>
 
-        <label>Assign To</label>
-        <select></select>
+                            <button type="submit">Login</button>
+                        </form>
+                    </section>
 
-        <label>Priority</label>
-        <select>
-          <option>High</option>
-          <option>Medium</option>
-          <option>Low</option>
-        </select>
+                    <section class="box">
+                        <h3>Register</h3>
+                        <form id="registerForm" class="form-stack">
+                            <label>Name</label>
+                            <input type="text" id="registerName" />
 
-        <label>Status</label>
-        <select>
-          <option>To Do</option>
-          <option>In Progress</option>
-          <option>Completed</option>
-        </select>
+                            <label>Email</label>
+                            <input type="email" id="registerEmail" />
 
-        <label>Deadline</label>
-        <input type="date" />
+                            <label>Password</label>
+                            <input type="password" id="registerPassword" />
 
-        <button type="submit" class="btn primary">Save Task</button>
-      </form>
-    </section>
+                            <label>Role</label>
+                            <select id="registerRole">
+                                <option value="">Select Role</option>
+                                <option value="admin">Admin</option>
+                                <option value="manager">Manager</option>
+                                <option value="developer">Developer</option>
+                                <option value="tester">Tester</option>
+                            </select>
 
-    <!-- Task List -->
-    <section id="task-list" class="section">
-      <h2>Task List</h2>
+                            <button type="submit">Register</button>
+                        </form>
+                    </section>
+                </div>
+            </section>
 
-      <div class="table-container card">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>User</th>
-              <th>Priority</th>
-              <th>Status</th>
-              <th>Deadline</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="taskTableBody"></tbody>
-        </table>
-      </div>
-    </section>
+            <!-- DASHBOARD -->
+            <section id="dashboard" class="panel">
+                <div class="section-heading">
+                    <h2>Dashboard</h2>
+                </div>
 
-    <!-- Kanban -->
-    <section id="kanban" class="section">
-      <h2>Kanban Board</h2>
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <h3>Total Tasks</h3>
+                        <p id="totalTasks"></p>
+                    </article>
+                    <article class="stat-card">
+                        <h3>To Do</h3>
+                        <p id="todoCount"></p>
+                    </article>
+                    <article class="stat-card">
+                        <h3>In Progress</h3>
+                        <p id="inProgressCount"></p>
+                    </article>
+                    <article class="stat-card">
+                        <h3>Completed</h3>
+                        <p id="completedCount"></p>
+                    </article>
+                </div>
+            </section>
 
-      <div class="kanban">
-        <div class="kanban-column">
-          <h3>To Do</h3>
-          <div id="todoColumn" class="kanban-box"></div>
-        </div>
+            <!-- USERS -->
+            <section id="users" class="panel">
+                <div class="section-heading">
+                    <h2>User Management</h2>
+                </div>
 
-        <div class="kanban-column">
-          <h3>In Progress</h3>
-          <div id="inProgressColumn" class="kanban-box"></div>
-        </div>
+                <div class="two-column">
+                    <section class="box">
+                        <h3>Create User</h3>
+                        <form id="userForm" class="form-stack">
+                            <label>Name</label>
+                            <input type="text" id="userName" />
 
-        <div class="kanban-column">
-          <h3>Completed</h3>
-          <div id="completedColumn" class="kanban-box"></div>
-        </div>
-      </div>
-    </section>
+                            <label>Email</label>
+                            <input type="email" id="userEmail" />
 
-    <!-- Reports -->
-    <section id="reports" class="section">
-      <h2>Reports</h2>
+                            <label>Role</label>
+                            <select id="userRole">
+                                <option value="">Select Role</option>
+                                <option value="admin">Admin</option>
+                                <option value="manager">Manager</option>
+                                <option value="developer">Developer</option>
+                                <option value="tester">Tester</option>
+                            </select>
 
-      <div class="grid-2">
-        <div class="card">
-          <h3>Task Chart</h3>
-          <canvas id="taskChart"></canvas>
-        </div>
+                            <button type="submit">Save User</button>
+                        </form>
+                    </section>
 
-        <div class="card">
-          <h3>Productivity</h3>
-          <div id="analytics"></div>
-        </div>
-      </div>
-    </section>
+                    <section class="box">
+                        <h3>User List</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody id="userTableBody"></tbody>
+                        </table>
+                    </section>
+                </div>
+            </section>
 
-    <!-- Notifications -->
-    <section id="notifications" class="section">
-      <h2>Notifications</h2>
-      <ul id="notificationList" class="list"></ul>
-    </section>
+            <!-- TASK FORM -->
+            <section id="task-form-section" class="panel">
+                <h2>Create Task</h2>
 
-  </main>
+                <form id="taskForm" class="form-stack">
+                    <label>Title</label>
+                    <input type="text" id="taskTitle" />
 
-  <footer class="footer">
-    <p>Task Management System</p>
-  </footer>
+                    <label>Description</label>
+                    <textarea id="taskDescription"></textarea>
 
+                    <label>Assign To</label>
+                    <select id="assignedUser"></select>
+
+                    <label>Priority</label>
+                    <select id="taskPriority">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                    <label>Status</label>
+                    <select id="taskStatus">
+                        <option value="todo">To Do</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+
+                    <label>Deadline</label>
+                    <input type="date" id="taskDeadline" />
+
+                    <button type="submit">Save Task</button>
+                </form>
+            </section>
+
+            <!-- TASK LIST -->
+            <section id="task-list" class="panel">
+                <h2>Task List</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>User</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskTableBody"></tbody>
+                </table>
+            </section>
+
+            <!-- KANBAN -->
+            <section id="kanban" class="panel">
+                <h2>Kanban Board</h2>
+
+                <div class="kanban-layout">
+                    <div>
+                        <h3>To Do</h3>
+                        <div id="todoColumn"></div>
+                    </div>
+                    <div>
+                        <h3>In Progress</h3>
+                        <div id="inProgressColumn"></div>
+                    </div>
+                    <div>
+                        <h3>Completed</h3>
+                        <div id="completedColumn"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CALENDAR -->
+            <section id="calendar-view" class="panel">
+                <h2>Calendar</h2>
+                <div id="calendarContainer"></div>
+            </section>
+
+            <!-- REPORTS -->
+            <section id="reports" class="panel">
+                <h2>Reports</h2>
+                <canvas id="taskProgressChart"></canvas>
+            </section>
+
+            <!-- NOTIFICATIONS -->
+            <section id="notifications" class="panel">
+                <h2>Notifications</h2>
+                <ul id="notificationList"></ul>
+            </section>
+
+            <!-- ACTIVITY -->
+            <section id="activity-log" class="panel">
+                <h2>Activity Log</h2>
+                <ul id="activityLogList"></ul>
+            </section>
+
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>Task Management System</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
