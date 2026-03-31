@@ -12,11 +12,19 @@
 
     <header class="topbar">
         <div class="topbar-inner">
-            <h1 class="site-title">Task Management System</h1>
-            <p class="site-subtitle">Organize tasks, users, and progress</p>
+
+            <div class="topbar-left">
+                <h1 class="site-title">Task Management System</h1>
+                <p class="site-subtitle">Organize tasks, users, and progress</p>
+            </div>
+
+            <div class="topbar-right" id="account-panel">
+                <div id="accountInfo">No user is logged in.</div>
+                <button id="logoutBtn" type="button">Logout</button>
+            </div>
+
         </div>
     </header>
-
     <div class="page-layout">
         <aside class="sidebar">
             <h2 class="sidebar-title">Menu</h2>
