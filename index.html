@@ -12,7 +12,6 @@
 
     <header class="topbar">
         <div class="topbar-inner">
-
             <div class="topbar-left">
                 <h1 class="site-title">Task Management System</h1>
                 <p class="site-subtitle">Organize tasks, users, and progress</p>
@@ -22,10 +21,11 @@
                 <div id="accountInfo">No user is logged in.</div>
                 <button id="logoutBtn" type="button">Logout</button>
             </div>
-
         </div>
     </header>
+
     <div class="page-layout">
+
         <aside class="sidebar">
             <h2 class="sidebar-title">Menu</h2>
             <nav>
@@ -53,18 +53,20 @@
                     <p>Login and register users.</p>
                 </div>
 
+                <p id="authMessage" class="form-message" aria-live="polite"></p>
+
                 <div class="two-column">
                     <section class="box">
                         <h3>Login</h3>
                         <form id="loginForm" class="form-stack">
-                            <label>Email</label>
-                            <input type="email" id="loginEmail" />
+                            <label for="loginEmail">Email</label>
+                            <input type="email" id="loginEmail" required />
 
-                            <label>Password</label>
-                            <input type="password" id="loginPassword" />
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" required />
 
-                            <label>Role</label>
-                            <select id="loginRole">
+                            <label for="loginRole">Role</label>
+                            <select id="loginRole" required>
                                 <option value="">Select Role</option>
                                 <option value="admin">Admin</option>
                                 <option value="manager">Manager</option>
@@ -79,17 +81,17 @@
                     <section class="box">
                         <h3>Register</h3>
                         <form id="registerForm" class="form-stack">
-                            <label>Name</label>
-                            <input type="text" id="registerName" />
+                            <label for="registerName">Name</label>
+                            <input type="text" id="registerName" required />
 
-                            <label>Email</label>
-                            <input type="email" id="registerEmail" />
+                            <label for="registerEmail">Email</label>
+                            <input type="email" id="registerEmail" required />
 
-                            <label>Password</label>
-                            <input type="password" id="registerPassword" />
+                            <label for="registerPassword">Password</label>
+                            <input type="password" id="registerPassword" required />
 
-                            <label>Role</label>
-                            <select id="registerRole">
+                            <label for="registerRole">Role</label>
+                            <select id="registerRole" required>
                                 <option value="">Select Role</option>
                                 <option value="admin">Admin</option>
                                 <option value="manager">Manager</option>
@@ -107,24 +109,25 @@
             <section id="dashboard" class="panel">
                 <div class="section-heading">
                     <h2>Dashboard</h2>
+                    <p>Overview of all visible tasks.</p>
                 </div>
 
                 <div class="stats-grid">
                     <article class="stat-card">
                         <h3>Total Tasks</h3>
-                        <p id="totalTasks"></p>
+                        <p id="totalTasks">0</p>
                     </article>
                     <article class="stat-card">
                         <h3>To Do</h3>
-                        <p id="todoCount"></p>
+                        <p id="todoCount">0</p>
                     </article>
                     <article class="stat-card">
                         <h3>In Progress</h3>
-                        <p id="inProgressCount"></p>
+                        <p id="inProgressCount">0</p>
                     </article>
                     <article class="stat-card">
                         <h3>Completed</h3>
-                        <p id="completedCount"></p>
+                        <p id="completedCount">0</p>
                     </article>
                 </div>
             </section>
@@ -133,20 +136,23 @@
             <section id="users" class="panel">
                 <div class="section-heading">
                     <h2>User Management</h2>
+                    <p>Create and view system users.</p>
                 </div>
+
+                <p id="userMessage" class="form-message" aria-live="polite"></p>
 
                 <div class="two-column">
                     <section class="box">
                         <h3>Create User</h3>
                         <form id="userForm" class="form-stack">
-                            <label>Name</label>
-                            <input type="text" id="userName" />
+                            <label for="userName">Name</label>
+                            <input type="text" id="userName" required />
 
-                            <label>Email</label>
-                            <input type="email" id="userEmail" />
+                            <label for="userEmail">Email</label>
+                            <input type="email" id="userEmail" required />
 
-                            <label>Role</label>
-                            <select id="userRole">
+                            <label for="userRole">Role</label>
+                            <select id="userRole" required>
                                 <option value="">Select Role</option>
                                 <option value="admin">Admin</option>
                                 <option value="manager">Manager</option>
@@ -160,88 +166,152 @@
 
                     <section class="box">
                         <h3>User List</h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                </tr>
-                            </thead>
-                            <tbody id="userTableBody"></tbody>
-                        </table>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="userTableBody"></tbody>
+                            </table>
+                        </div>
                     </section>
                 </div>
             </section>
 
             <!-- TASK FORM -->
             <section id="task-form-section" class="panel">
-                <h2>Create Task</h2>
+                <div class="section-heading">
+                    <h2>Create / Update Task</h2>
+                    <p>Add a new task with assignment, priority, deadline, and dependency.</p>
+                </div>
+
+                <p id="taskFormMessage" class="form-message" aria-live="polite"></p>
 
                 <form id="taskForm" class="form-stack">
-                    <label>Title</label>
-                    <input type="text" id="taskTitle" />
+                    <input type="hidden" id="editTaskId" />
 
-                    <label>Description</label>
-                    <textarea id="taskDescription"></textarea>
+                    <label for="taskTitle">Title</label>
+                    <input type="text" id="taskTitle" required />
 
-                    <label>Assign To</label>
-                    <select id="assignedUser"></select>
+                    <label for="taskDescription">Description</label>
+                    <textarea id="taskDescription" rows="4"></textarea>
 
-                    <label>Priority</label>
-                    <select id="taskPriority">
+                    <label for="assignedUser">Assign To</label>
+                    <select id="assignedUser" required>
+                        <option value="">Select User</option>
+                    </select>
+
+                    <label for="taskPriority">Priority</label>
+                    <select id="taskPriority" required>
+                        <option value="">Select Priority</option>
                         <option value="high">High</option>
                         <option value="medium">Medium</option>
                         <option value="low">Low</option>
                     </select>
 
-                    <label>Status</label>
-                    <select id="taskStatus">
+                    <label for="taskStatus">Status</label>
+                    <select id="taskStatus" required>
                         <option value="todo">To Do</option>
                         <option value="in-progress">In Progress</option>
                         <option value="completed">Completed</option>
                     </select>
 
-                    <label>Deadline</label>
-                    <input type="date" id="taskDeadline" />
+                    <label for="taskDeadline">Deadline</label>
+                    <input type="date" id="taskDeadline" required />
 
-                    <button type="submit">Save Task</button>
+                    <label for="taskDependency">Task Dependency</label>
+                    <select id="taskDependency">
+                        <option value="">No Dependency</option>
+                    </select>
+
+                    <div class="form-actions">
+                        <button type="submit" id="saveTaskBtn">Save Task</button>
+                        <button type="button" id="cancelEditBtn">Cancel Edit</button>
+                    </div>
                 </form>
             </section>
 
             <!-- TASK LIST -->
             <section id="task-list" class="panel">
-                <h2>Task List</h2>
+                <div class="section-heading">
+                    <h2>Task List</h2>
+                    <p>View, filter, and manage tasks.</p>
+                </div>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>User</th>
-                            <th>Status</th>
-                            <th>Priority</th>
-                        </tr>
-                    </thead>
-                    <tbody id="taskTableBody"></tbody>
-                </table>
+                <div class="task-toolbar">
+                    <div class="filter-group">
+                        <label for="filterStatus">Filter by Status</label>
+                        <select id="filterStatus">
+                            <option value="">All Statuses</option>
+                            <option value="todo">To Do</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filterPriority">Filter by Priority</label>
+                        <select id="filterPriority">
+                            <option value="">All Priorities</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="searchTask">Search Task</label>
+                        <input type="text" id="searchTask" placeholder="Search by title..." />
+                    </div>
+
+                    <div class="task-history-buttons">
+                        <button type="button" id="undoBtn">Undo</button>
+                        <button type="button" id="redoBtn">Redo</button>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Assigned To</th>
+                                <th>Status</th>
+                                <th>Priority</th>
+                                <th>Deadline</th>
+                                <th>Dependency</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="taskTableBody"></tbody>
+                    </table>
+                </div>
             </section>
 
             <!-- KANBAN -->
             <section id="kanban" class="panel">
-                <h2>Kanban Board</h2>
+                <div class="section-heading">
+                    <h2>Kanban Board</h2>
+                    <p>Track tasks visually by status.</p>
+                </div>
 
                 <div class="kanban-layout">
-                    <div>
+                    <div class="kanban-column">
                         <h3>To Do</h3>
                         <div id="todoColumn"></div>
                     </div>
-                    <div>
+                    <div class="kanban-column">
                         <h3>In Progress</h3>
                         <div id="inProgressColumn"></div>
                     </div>
-                    <div>
+                    <div class="kanban-column">
                         <h3>Completed</h3>
                         <div id="completedColumn"></div>
                     </div>
@@ -250,25 +320,37 @@
 
             <!-- CALENDAR -->
             <section id="calendar-view" class="panel">
-                <h2>Calendar</h2>
+                <div class="section-heading">
+                    <h2>Calendar</h2>
+                    <p>Task deadline calendar view.</p>
+                </div>
                 <div id="calendarContainer"></div>
             </section>
 
             <!-- REPORTS -->
             <section id="reports" class="panel">
-                <h2>Reports</h2>
+                <div class="section-heading">
+                    <h2>Reports</h2>
+                    <p>Task progress chart and analytics.</p>
+                </div>
                 <canvas id="taskProgressChart"></canvas>
             </section>
 
             <!-- NOTIFICATIONS -->
             <section id="notifications" class="panel">
-                <h2>Notifications</h2>
+                <div class="section-heading">
+                    <h2>Notifications</h2>
+                    <p>System updates and task status alerts.</p>
+                </div>
                 <ul id="notificationList"></ul>
             </section>
 
-            <!-- ACTIVITY -->
+            <!-- ACTIVITY LOG -->
             <section id="activity-log" class="panel">
-                <h2>Activity Log</h2>
+                <div class="section-heading">
+                    <h2>Activity Log</h2>
+                    <p>Recent actions performed in the system.</p>
+                </div>
                 <ul id="activityLogList"></ul>
             </section>
 
@@ -276,7 +358,7 @@
     </div>
 
     <footer class="footer">
-        <p>Task Management System</p>
+        <p>Task Management System | DGL 104 Project</p>
     </footer>
 
     <script src="js/main.js"></script>
