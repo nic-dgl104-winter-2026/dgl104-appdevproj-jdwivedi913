@@ -27,6 +27,16 @@ body {
 .topbar-inner {
     max-width: 1300px;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Left side */
+.topbar-left {
+    display: flex;
+    flex-direction: column;
 }
 
 .site-title {
@@ -38,20 +48,6 @@ body {
 .site-subtitle {
     color: #6b7f92;
     font-size: 1rem;
-}
-
-/* Header Layout */
-.topbar-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-}
-
-/* Left side */
-.topbar-left {
-    display: flex;
-    flex-direction: column;
 }
 
 /* Right side (Account panel) */
@@ -239,7 +235,9 @@ body {
 
 .form-stack input:focus,
 .form-stack select:focus,
-.form-stack textarea:focus {
+.form-stack textarea:focus,
+.task-toolbar input:focus,
+.task-toolbar select:focus {
     outline: none;
     border-color: #91b7dc;
     box-shadow: 0 0 0 3px rgba(145, 183, 220, 0.2);
@@ -276,11 +274,53 @@ button:hover {
     flex-wrap: wrap;
 }
 
+/* NEW: form actions for Save / Cancel */
+.form-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.form-actions button {
+    margin-top: 4px;
+}
+
+#cancelEditBtn {
+    background-color: #dbe7f2;
+    color: #42586c;
+}
+
+#cancelEditBtn:hover {
+    background-color: #cad9e8;
+}
+
+/* NEW: message boxes */
+.form-message {
+    display: none;
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background-color: #f8fbff;
+    border: 1px solid #dce9f6;
+    color: #35587a;
+    font-size: 0.95rem;
+}
+
+.form-message.show {
+    display: block;
+}
+
 /* Tables */
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    min-width: 900px;
 }
 
 thead {
@@ -313,6 +353,48 @@ tbody tr:hover {
     content: "";
 }
 
+/* NEW: task toolbar */
+.task-toolbar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 18px;
+    align-items: end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    font-weight: bold;
+    color: #42586c;
+    margin-bottom: 6px;
+}
+
+.filter-group input,
+.filter-group select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #d6e2ed;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #334155;
+    font: inherit;
+}
+
+/* NEW: undo redo button area */
+.task-history-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.task-history-buttons button {
+    padding: 11px 14px;
+}
+
 /* Kanban */
 .kanban-layout {
     display: grid;
@@ -320,6 +402,7 @@ tbody tr:hover {
     gap: 18px;
 }
 
+.kanban-column,
 .kanban-layout>div {
     background-color: #fcfdff;
     border: 1px solid #e7eff7;
@@ -327,6 +410,7 @@ tbody tr:hover {
     padding: 16px;
 }
 
+.kanban-column h3,
 .kanban-layout h3 {
     color: #35587a;
     margin-bottom: 12px;
@@ -342,6 +426,40 @@ tbody tr:hover {
     padding: 12px;
 }
 
+/* NEW: task cards for kanban JS output */
+.task-card {
+    background-color: #ffffff;
+    border: 1px solid #dce9f6;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(38, 71, 102, 0.06);
+}
+
+.task-card h4 {
+    color: #264766;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.task-card p {
+    color: #51687d;
+    font-size: 0.93rem;
+    margin-bottom: 6px;
+}
+
+.task-card div {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.task-card button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
 /* Calendar / Report placeholders */
 #calendarContainer,
 #taskProgressChart {
@@ -351,6 +469,14 @@ tbody tr:hover {
     border: 1px dashed #c7dcef;
     border-radius: 12px;
     padding: 14px;
+}
+
+#calendarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7f92;
+    text-align: center;
 }
 
 /* Lists */
@@ -387,6 +513,121 @@ td button {
     font-size: 0.95rem;
 }
 
+/* Create User section improvement */
+#users .two-column {
+    align-items: start;
+}
+
+#users .box {
+    background-color: #ffffff;
+    border: 1px solid #dce9f6;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 4px 12px rgba(38, 71, 102, 0.05);
+}
+
+#users .box h3 {
+    color: #264766;
+    font-size: 1.15rem;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8f0f7;
+}
+
+#userForm {
+    gap: 0;
+}
+
+#userForm label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #42586c;
+    margin-bottom: 6px;
+}
+
+#userForm input,
+#userForm select {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    border: 1px solid #d6e2ed;
+    border-radius: 10px;
+    background-color: #fdfefe;
+    transition: 0.25s ease;
+}
+
+#userForm input:focus,
+#userForm select:focus {
+    border-color: #8db5da;
+    box-shadow: 0 0 0 3px rgba(141, 181, 218, 0.18);
+    background-color: #ffffff;
+}
+
+#userForm button {
+    width: 100%;
+    margin-top: 4px;
+    padding: 12px 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    background-color: #78a8d8;
+}
+
+#userForm button:hover {
+    background-color: #6798c9;
+}
+
+/* User table side better look */
+#users .table-wrap {
+    border: 1px solid #e2edf8;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+#users table {
+    margin-top: 0;
+    min-width: 100%;
+}
+
+#users thead {
+    background-color: #eef6ff;
+}
+
+#users th {
+    color: #35587a;
+    font-size: 0.95rem;
+}
+
+#users td {
+    color: #51687d;
+    font-size: 0.94rem;
+}
+
+/* Message style for user section */
+#userMessage {
+    display: none;
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background-color: #eef6ff;
+    border: 1px solid #d6e8f7;
+    color: #35587a;
+}
+
+#userMessage.show {
+    display: block;
+}
+
+/* Responsive fix */
+@media (max-width: 768px) {
+    #users .box {
+        padding: 18px;
+    }
+
+    #userForm button {
+        width: 100%;
+    }
+}
+
 /* Responsive */
 @media (max-width: 1100px) {
     .page-layout {
@@ -414,6 +655,10 @@ td button {
     .kanban-layout {
         grid-template-columns: 1fr;
     }
+
+    .task-toolbar {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
@@ -421,9 +666,23 @@ td button {
         padding: 16px;
     }
 
+    .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .topbar-right {
+        align-items: flex-start;
+    }
+
+    #accountInfo {
+        text-align: left;
+    }
+
     .two-column,
     .stats-grid,
-    .sidebar-nav {
+    .sidebar-nav,
+    .task-toolbar {
         grid-template-columns: 1fr;
     }
 
@@ -435,12 +694,20 @@ td button {
         padding: 18px;
     }
 
-    .button-row {
+    .button-row,
+    .form-actions,
+    .task-history-buttons {
         flex-direction: column;
     }
 
-    .button-row button {
+    .button-row button,
+    .form-actions button,
+    .task-history-buttons button {
         width: 100%;
+    }
+
+    table {
+        min-width: 100%;
     }
 
     table,
