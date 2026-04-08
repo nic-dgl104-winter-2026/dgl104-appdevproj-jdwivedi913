@@ -1,5 +1,14 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/R5_Sso5O)
 # DGL 104 - Task Management System (TMS)
+
+## Live Demo 🚀
+
+view the deployed Task Management System here:
+
+ [Open Task Management App](https://jdwivedi913.github.io/Task-management-website-demo-/)
+
+ This live demo showcases the full functionality of the application, including authentication, task management, dashboard, Kanban board, calendar view, notifications, and design pattern implementation.
+ 
 ## Introduction
 
 ## Tech Stack
