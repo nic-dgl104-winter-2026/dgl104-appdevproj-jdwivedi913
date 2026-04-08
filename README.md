@@ -158,3 +158,30 @@ Benefit:
 	•	Supports undo/redo
 	•	Encapsulates operations
 	•	Improves maintainability
+```
+
+
+## References (YouTube)
+
+The following YouTube tutorials were used to understand concepts such as task management systems, localStorage, and JavaScript design patterns. The knowledge gained from these videos was adapted and implemented in this project.
+
+- Task Manager App with LocalStorage  
+  https://youtu.be/yfpeGwkVeHI  
+
+- JavaScript Design Patterns Tutorial  
+  https://youtu.be/kslfZCbr_Fg  
+
+- To-Do List App using JavaScript  
+  https://youtu.be/G0jO8kUrg-I  
+
+- Simple Task Management App (HTML, CSS, JS)  
+  https://youtu.be/txSwC82v6UM  
+
+- Build Task Manager App from Scratch (CRUD)  
+  https://youtu.be/mbLpQmPGKts  
+
+- Full Stack Task Management App (Advanced Reference)  
+  https://youtu.be/50NN3d-Ne1U  
+
+
+> These videos were used for learning purposes. The final implementation was customized, extended, and integrated with additional features such as design patterns (Factory, Observer, Singleton, Command), task dependencies, undo/redo functionality, and UI improvements.
